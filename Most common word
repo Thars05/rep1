@@ -1,0 +1,34 @@
+class Solution {
+    public String mostCommonWord(String paragraph, String[] banned) {
+        String lowerpara=paragraph.toLowerCase();
+        String nopunc_para=paragraph.replaceAll("[^a-zA-Z] " ,"");
+        String[] words=paragraph.split("\\s+");
+        int cur_count=1;
+        int max_count=0;
+        String max_word=" ";
+        Arrays.sort(words);
+        for(int i=0;i<words.length;i++){
+            if(i<words.length-1 && words[i].equals(words[i+1])){
+                cur_count++;
+            }
+            else{
+                boolean ban=false;
+                for(String b:banned){
+                    if(words[i].equals(b)){
+                        ban=true;
+                        break;
+                    }
+                }
+                if(!ban && cur_count>max_count){
+                    max_count=cur_count;
+                    max_word=words[i];
+                    
+                }
+                cur_count=1;
+            }
+        }
+        return max_word;
+        
+    }
+
+}
