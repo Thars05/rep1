@@ -1,0 +1,16 @@
+class Solution {
+    public boolean checkGoodInteger(int n) {
+
+        int sum=0,dsum=0;
+        while(n>0){
+            sum+=n%10;
+            dsum+=(sum)*(sum);
+            n=n/10;
+        }
+        if((dsum-sum)>=50){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
