@@ -1,0 +1,54 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+
+public class Main
+{
+    public static String compress(String ip){
+        int count=1,i=0;
+        StringBuilder com=new StringBuilder();
+        for (i = 0; i < ip.length(); i++) {
+            if(i+1<ip.length() && ip.charAt(i)==ip.charAt(i+1)){
+                count++;
+        }else{
+            com.append(count).append(ip.charAt(i));
+            count=1;
+        }
+        }
+        return com.toString();
+    }
+    public static String dcompress(String ip){
+        int i=0;
+        StringBuilder dc=new StringBuilder();
+        while(i<ip.length()){
+            StringBuilder dcom=new StringBuilder();
+
+            String d="";
+            while(i<ip.length() && Character.isDigit(ip.charAt(i))){
+                d=dcom.append(ip.charAt(i)).toString();
+                i++;
+                
+            }
+            int count=Integer.parseInt(d);
+            char ch=ip.charAt(i);
+            for(int j=0;j<count;j++){
+                dc.append(ch);
+            }
+            i++;
+        }
+        return dc.toString();
+    }
+	public static void main(String[] args) {
+	    String originalData = "AAAAABBBCCDDDDD";
+        System.out.println("Original:   " + originalData);
+        String compressedData = compress(originalData);
+        System.out.println("Compressed: " + compressedData);
+        String decompressedData = dcompress(compressedData);
+        System.out.println("Restored:   " + decompressedData);
+    }
+}
+	    
