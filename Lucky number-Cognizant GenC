@@ -1,0 +1,36 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.Scanner;
+public class Main
+{
+    
+	public static void main(String[] args) {
+	    Scanner s = new Scanner(System.in);
+        System.out.println("Enter a number:");
+        String n=s.nextLine();
+        int len=n.length();
+        int n1=Integer.parseInt(n);
+        int sum=0;
+        if(n1>0 && len==4){
+        while(n1>0){
+            sum+=n1%10;
+            n1=n1/10;
+        }
+        if(sum%3==0 || sum%5==0 || sum%7==0){
+            System.out.println("Lucky Number");
+        }else{
+            System.out.println("Sorry its not my lucky number");
+        }
+        
+    }else{
+            System.out.println("Invalid input");
+
+    }
+}
+}
+	    
